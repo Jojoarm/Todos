@@ -46,7 +46,6 @@ function getTodos(){
     } else {
         todos = JSON.parse(localStorage.getItem('todoList'))
     } 
-    console.log(todos)
     for(let i=0; i<todos.length; i++){
         todoItems.innerHTML += `<div class='todo-container'>
             <div class="todoList">${todos[i]}</div>
@@ -78,7 +77,7 @@ function checkTodos(){
 
 //Remove deleted todos from local storage
 function removeTodos(key){
-    let itemKey = key.parentElement.children[0].innerText
+    let itemKey = key.parentElement.children[0].innerText //Access the div containing the todo item
     let todos
     if (localStorage.getItem('todoList')===null){
         todos = []
@@ -93,6 +92,28 @@ function removeTodos(key){
     localStorage.setItem("todoList", JSON.stringify(todos))
 }
 
-function filterTodo(){
-    console.log(filterTodo.value)
+//Filter your todo items so you can view items you have completed and those uncompleted
+function filterTodo(e){
+    const items = todoItems.children;
+    for (let i=0; i<items.length; i++){
+        switch(e.target.value){
+            case "all":
+                items[i].style.display = 'flex';
+                break;
+            case "completed":
+                if(items[i].classList.contains('checked')){
+                    items[i].style.display = 'flex';
+                } else{
+                    items[i].style.display = 'none'
+                }
+                break;
+            case 'uncompleted':
+                if(!items[i].classList.contains('checked')){
+                    items[i].style.display = 'flex';
+                } else{
+                    items[i].style.display = 'none'
+                }
+                break;
+        }
+    }
 }
