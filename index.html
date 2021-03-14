@@ -13,8 +13,18 @@
     <div class="container">
         <h1>Jojo's ToDo List</h1>
         <div class="input-container">
-            <input class='input' type="text" placeholder="Enter your todo item">
-            <button class="submit-btn" type='submit'>Submit</button>
+            <form>
+                <input class='input' type="text" placeholder="Enter your todo item">
+                <button class="submit-btn" type='submit'>Submit</button>
+                <div class="select">
+                    <select name="todos" class="filter-todo">
+                        <option value="all">All</option>
+                        <option value="completed">Completed</option>
+                        <option value="uncompleted">Uncompleted</option>
+                    </select>
+                </div>
+            </form>
+            
         </div>
         <div class="todos">
             
